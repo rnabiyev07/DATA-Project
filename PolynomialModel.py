@@ -27,13 +27,8 @@ def train_logistic_regression(data):
 
     # Scale the data
     scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
-
-    # Polynomial feature transformation
-    poly = PolynomialFeatures(degree=2)  # Using degree=2 for polynomial features
-    X_train_poly = poly.fit_transform(X_train_scaled)
-    X_test_poly = poly.transform(X_test_scaled)
+    X_train_poly = scaler.fit_transform(X_train)
+    X_test_poly = scaler.transform(X_test)
 
     # Create a logistic regression model and fit it to the training data
     model = LogisticRegression(max_iter=1000)  # Increase max_iter to avoid convergence warning
